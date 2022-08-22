@@ -39,11 +39,11 @@ public class Bank implements Runnable {
         lastUpdate = Instant.now();
     }
 
-    public boolean accountExists(long accountID) {
+    public synchronized boolean accountExists(long accountID) {
         return accounts.containsKey(accountID);
     }
     // Verify the pin entered against the account it is entered for
-    public boolean pinCheck(long accountID, int pin) {
+    public synchronized boolean pinCheck(long accountID, int pin) {
         return accounts.get(accountID).checkPin(pin);
     }
 
